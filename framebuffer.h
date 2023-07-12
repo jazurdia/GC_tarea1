@@ -68,6 +68,11 @@ public:
         }
     }
 
+    void drawAndFillPolygon(const std::vector<Vertex>& vertices, const Color& lineColor, const Color& fillColor) {
+        fillPolygon(vertices, fillColor);
+        drawPolygon(vertices, lineColor);
+    }
+
     void renderBuffer() {
         std::ofstream ofs("out.bmp", std::ios::binary);
 
@@ -149,6 +154,7 @@ public:
             }
         }
     }
+
 
 };
 
