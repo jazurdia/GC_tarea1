@@ -108,7 +108,6 @@ public:
         }
         return ret;
     }
-
     std::string writeShort(unsigned short value) {
         std::string ret;
         for (int i = 0; i < 2; i++) {
@@ -117,6 +116,40 @@ public:
         }
         return ret;
     }
+    bool lineIntersection(const Vertex& v1, const Vertex& v2, int y, int& x) {
+        if ((v1.y <= y && v2.y > y) || (v2.y <= y && v1.y > y)) {
+            x = v1.x + (v2.x - v1.x) * (y - v1.y) / (float)(v2.y - v1.y);
+            return true;
+        }
+        return false;
+    }
+
+    void fillPolygon(const std::vector<Vertex>& vertices, const Color& color) {
+        int minY = vertices[0].y, maxY = vertices[0].y;
+        for (const auto& vertex : vertices) {
+            minY = std::min(minY, vertex.y);
+            maxY = std::max(maxY, vertex.y);
+        }
+
+        for (int y = minY; y <= maxY; y++) {
+            std::vector<int> intersections;
+            for (size_t i = 0; i < vertices.size(); i++) {
+                int x;
+                if (lineIntersection(vertices[i], vertices[(i+1)%vertices.size()], y, x)) {
+                    intersections.push_back(x);
+                }
+            }
+
+            std::sort(intersections.begin(), intersections.end());
+
+            for (size_t i = 0; i < intersections.size(); i += 2) {
+                for (int x = intersections[i]; x < intersections[i+1]; x++) {
+                    putPixel(Vertex(x, y), color);
+                }
+            }
+        }
+    }
+
 };
 
 #endif // FRAMEBUFFER_H

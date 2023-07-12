@@ -9,7 +9,7 @@ void render() {
 
     currentColor = Color(255, 255, 255); // WHITE
     std::vector<Vertex> vertices = {Vertex(10, 10), Vertex(300, 300), Vertex(600, 50)};
-    framebuffer.drawPolygon(vertices, currentColor);
+    framebuffer.fillPolygon(vertices, currentColor);
     framebuffer.renderBuffer();
 }
 
