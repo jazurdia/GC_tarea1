@@ -6,6 +6,7 @@ Framebuffer framebuffer(800, 600, Color(0, 0, 128)); // NAVY_BLUE
 void render() {
     framebuffer.clear();
 
+
     std::vector<Vertex> vertices = {
             Vertex(165, 380),
             Vertex(185, 360),
