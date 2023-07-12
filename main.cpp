@@ -6,9 +6,15 @@ Framebuffer framebuffer(800, 600, Color(0, 0, 128)); // NAVY_BLUE
 void render() {
     framebuffer.clear();
 
-    std::vector<Vertex> vertices = {Vertex(10, 10), Vertex(300, 300), Vertex(600, 50)};
-    framebuffer.drawAndFillPolygon(vertices, Color(255, 0, 0), Color(0, 255, 0));
-    // Rojo para las líneas, verde para el relleno
+    std::vector<Vertex> vertices = {
+            Vertex(321, 335),
+            Vertex(288, 286),
+            Vertex(339, 251),
+            Vertex(374, 302)
+    };
+
+    framebuffer.drawAndFillPolygon(vertices, Color(255, 255, 255), Color(0, 0, 255)); // Blanco para las líneas, azul para el relleno
+
     framebuffer.renderBuffer();
 }
 

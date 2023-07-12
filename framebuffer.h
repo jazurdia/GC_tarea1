@@ -7,6 +7,8 @@
 #include "color.h"
 #include "vertex.h"
 
+// Pedir al chat el algoritmo de Bresenham
+
 class Framebuffer {
 private:
     std::vector<Color> buffer;
