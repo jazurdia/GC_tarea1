@@ -3,4 +3,4 @@ project(tarea1)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(tarea1 main.cpp color.h color.cpp globals.h)
+add_executable(tarea1 main.cpp framebuffer.h color.h vertex2.h vertex.h)

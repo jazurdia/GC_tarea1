@@ -1,21 +1,18 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include <iostream>
-
 class Color {
-private:
+public:
     unsigned char r, g, b;
 
-public:
-    Color(unsigned char r = 0, unsigned char g = 0, unsigned char b = 0);
+    Color(unsigned char red = 0, unsigned char green = 0, unsigned char blue = 0)
+            : r(red), g(green), b(blue) { }
 
-    friend std::ostream& operator<<(std::ostream& os, const Color& color);
-    friend Color operator+(const Color& c1, const Color& c2);
-    Color operator*(float f);
-
-private:
-    unsigned char clamp(int val);
+    void set(unsigned char red, unsigned char green, unsigned char blue) {
+        r = red;
+        g = green;
+        b = blue;
+    }
 };
 
 #endif // COLOR_H
